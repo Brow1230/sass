@@ -1,0 +1,87 @@
+//////////////////
+//DEFAULT MIXINS//
+//////////////////
+@mixin defaultHtml{
+    font-size:16px;
+    font-family:$sans;
+    line-height: 1.6;
+    font-weight:$wmd;
+}
+@mixin stripBrowser{
+    padding: 0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    
+    &:after,
+    &:before{
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+}
+@mixin famWei{
+    font-weight: $whv;
+    font-family: $serif;
+}
+@mixin marWid($val,$val2,$val3){
+    width:$val;
+    margin:$val2$val3;
+}
+@mixin fontSiSp($val,$val2){
+    font-size:$val;
+    letter-spacing:$val2;
+}
+/////////////////
+//COLOUR MIXINS//
+/////////////////
+@mixin bgcolor($val){
+    background-color: $val;
+}
+@mixin xcolor($val){
+    color:$val;
+}
+@mixin bg($val,$val2){
+    @include bgcolor($val);
+    @include xcolor($val2);
+}
+/////////////////
+//BORDER MIXINS//
+/////////////////
+@mixin bor($val, $val2){
+    border: $val solid $val2;
+}
+@mixin borT($val, $val2){
+    border-top: $val solid $val2;
+}
+@mixin borB($val, $val2){
+    border-bottom: $val solid $val2;
+}
+/////////////////
+//MIXIN CONTENT//
+/////////////////
+@mixin content($val,$val2,$val3){
+    @include bg($val,$val2);
+    font-weight:$val3;
+}
+///////////////
+//FONT MIXINS//
+///////////////
+@mixin font ($val,$val2,$val3) {
+    @include fsizeLS($val,$val2);
+    @include xcolor($val3);
+}
+@mixin paddedFont($val,$val2,$val3,$val4,$val5){
+    font-size:$val;
+    padding:$val2 $val3 $val4 $val5;
+}
+@mixin fSize($val){
+    font-size:$val;
+}
+@mixin fontSizeWidth($val, $val2){
+    @include fSize($val);
+    width: $val2;
+}
+@mixin fSWC($val, $val2, $val3){
+    @include fontSizeWidth($val,$val2);
+    @include xcolor($val3);
+}

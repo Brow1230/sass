@@ -1,0 +1,78 @@
+//var for ???? profit.
+$tr: 1;
+$ff: 0;
+$N: none;
+$L: left;
+$R: right;
+//Colour Vars
+$wht: #fff;
+$lbl: #C7F7FF;
+$mbl: #89C0C9;
+$dbl: #3a5E63;
+
+$lbr:#C9A689;
+$dbr:#7C593C;
+
+$lgr:#d4d4d4;
+$dgr:#222;
+
+/////////
+//FONTS//
+/////////
+//Font Family Vars
+$serif:Cardo, ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+$sans:'Josefin Sans', ‘Trebuchet MS’, Helvetica, sans-serif;
+//Font Weight Vars
+$wli:100;
+$wmd:400;
+$whv:700;
+
+/////////////////////////
+//SIZING && FONT SIZING//
+/////////////////////////
+$no: 0;
+$qt:0.25rem;
+$xsm:1rem;
+$FSm:1.414rem;
+$smp:1.999rem;
+$sm:2rem;
+$md:3.998rem;
+$xxl:7rem;
+
+/////////////
+//POSITIONS//
+/////////////
+$pA:absolute;
+$pR:relative;
+$pS:static;
+$pSt:sticky;
+
+//////////
+//WIDTHS//
+//////////
+$mobi:400px;
+$fil:100%;
+$haf:50%;
+$qua:25%;
+
+//////////////
+//FLEXI VARS//
+//////////////
+
+//directions
+$co:column;
+$rw:row;
+
+//justified-content
+$fs:flex-start;
+$sa:space-around;
+//aling-items[shared w/ text-aling]
+$str:stretch;
+$L:left;
+$R:right;
+$ctr:center;
+
+/////////////////
+//DISPLAY TYPES//
+/////////////////
+$blc:block;

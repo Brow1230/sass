@@ -1,9 +1,3 @@
-//var for ???? profit.
-$tr: 1;
-$ff: 0;
-$N: none;
-$L: left;
-$R: right;
 //Colour Vars
 $wht: #fff;
 $lbl: #C7F7FF;
@@ -27,26 +21,24 @@ $wli:100;
 $wmd:400;
 $whv:700;
 
-/////////////////////////
-//SIZING && FONT SIZING//
-/////////////////////////
+////////////////////////////////////////
+//SIZING && FONT SIZING && LINE HEIGHT//
+////////////////////////////////////////
 $no: 0;
 $qt:0.25rem;
+$half:0.5rem;
 $xsm:1rem;
-$FSm:1.414rem;
+$fsm:1.414rem;
 $smp:1.999rem;
 $sm:2rem;
 $md:3.998rem;
 $xxl:7rem;
-
+$lhmax:12.7936;
 /////////////
 //POSITIONS//
 /////////////
 $pA:absolute;
 $pR:relative;
-$pS:static;
-$pSt:sticky;
-
 //////////
 //WIDTHS//
 //////////
@@ -54,7 +46,13 @@ $mobi:400px;
 $fil:100%;
 $haf:50%;
 $qua:25%;
-
+////////////////
+//DISPLAY VARS//
+////////////////
+$N: none;
+$F: flex;
+$B: block;
+$IL: inline;
 //////////////
 //FLEXI VARS//
 //////////////
@@ -63,16 +61,10 @@ $qua:25%;
 $co:column;
 $rw:row;
 
-//justified-content
+//justified-content // align-items
 $fs:flex-start;
 $sa:space-around;
-//aling-items[shared w/ text-aling]
 $str:stretch;
 $L:left;
 $R:right;
 $ctr:center;
-
-/////////////////
-//DISPLAY TYPES//
-/////////////////
-$blc:block;

@@ -10,22 +10,21 @@ h1, h2, h3, h4{
     @include famWei;
 }
 ul{
-    list-style: none;
+    list-style: $N;
 }
 /***********************************************
                 LAYOUT
 ***********************************************/
 .bg-header{
     background-color: $wht;
-    background-color:$lbl;
-    color: $dgr;
+    @include bg($lbl, $dgr);
     border-bottom:1rem solid $mbl;
     border-top:1rem solid $dbl;
-    position: relative;
+    position: $pR;
     &:before,
     &:after{
         content:"";
-    position:absolute;
+    position:$pA;
     bottom:-1rem;
     height:1rem;
     width:30%;
@@ -60,223 +59,199 @@ ul{
 header{
     width: 400px; /* default min screen width */
     margin: 0 auto;
-    position: relative;
-}
-header h1{
-    width: 100%;
-    padding: 0 2rem;
-}
-header nav{
-    width: 100%;
-    display: flex;
-    flex-direction: column; /* mobile first */
-    justify-content: flex-start;
-    align-items: stretch;
-    padding:2rem 0;
-}
-header nav > a{
-    flex-basis: 100%;
-    flex-grow: 1;
-    flex-shrink: 0;
-    text-align: center;
+    position: $pR;
+    h1{
+        width: 100%;
+        padding: 0 2rem;
+    }
+    nav{
+        width: 100%;
+        @include flexMaster($F,$co,$fs,$str);
+        padding:2rem 0;
+        >a{
+            flex-basis: 100%;
+            flex-grow: 1;
+            flex-shrink: 0;
+            text-align: center;
+        }
+    }
 }
 
-section.focal{
+section{
+    .focal{
     width: 400px; /* default */
-    margin: 0 auto;
-}
-section.content1{
-    padding: 2rem 0;
-}
-section.content2{
-    padding:2rem 0;    
+    margin: 0 auto;}
+    .content1{
+        padding: 2rem 0;
+    }
+    .content2{
+        padding:2rem 0;    
+    }
 }
 .row{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items:stretch;
-}
-.row .col{
-    flex-basis: 100%; /* mobile default */
+    @include flexMaster($F,$co,$fs,$str);
+    .col{
+        @include flexBa($fil);
+    }
 }
 
-footer .row{
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-}
-footer .row > *{
-    flex-basis: 50%;
-    padding-bottom: 2rem;
-    border-left:1px solid $dbl;
-    margin-bottom: 2rem;
-}
-footer .row.last-row > *{
-    flex-basis: 100%;
-}
-footer .row .col:first-child{
-    border-left: 0;
-}
-footer{
+footer {
     padding:2rem 0;
+        .row{
+            flex-wrap: nowrap;
+            @include flexProp($rw,$sa,$fs);
+            > *{
+                @include flexBa($haf);
+                padding-bottom: 2rem;
+                border-left:1px solid $dbl;
+                margin-bottom: 2rem;
+            }
+            .last-row > *{
+                @include flexBa($fil);
+            }
+            .col:first-child{
+                border-left: 0;
+            }
+    }
 }
 /***********************************************
                 NAVIGATION
 ***********************************************/
 header nav{
-    
+     >a{
+        text-align: center;
+        text-decoration: $N;
+        @include bg($wht,$dgr);
+        @include fontSiSp($fsm,$qt);
+        border:1px solid $lgr; 
+        border-bottom: $N;
+        padding:1.0rem 2rem;
+        line-height: 1;
+     }
+     > a:hover{
+        font-weight: 700;
+        color:$dbr;
+    }
 }
-header nav > a{
-    text-align: center;
-    text-decoration: none;
-    color: $dgr;    
-    font-size: 1.414rem;
-    letter-spacing: 0.25rem;
-    border:1px solid $lgr; 
-    border-bottom: none;
-    padding:1.0rem 2rem;
-    line-height: 1;
-    background-color: $wht;
-}
-header nav > a:hover{
-    font-weight: 700;
-    color:$dbr;
-}
-
 /***********************************************
                 CONTENT
 ***********************************************/
 header h1{
     color: $dbr;
     letter-spacing: 0.1rem;
+    i.fa-lg{
+        @include floaters($B,$L);
+        width: 25%;
+        @include fslh($xxl,$lhmax);
+        color: $lbr;
+        ~ span{
+            float: $R;
+            width: 75%;
+            font-size: 3.998rem;
+            padding-left: 1rem;
+            text-align: right;
+        }
+    }
 }
-header h1 i.fa-lg{
-    display:block;
-    width: 25%;
-    float:left;
-    font-size: 7rem;
-    line-height: 12.7936rem;
-    color: $lbr;
+.focal{
+    h2{
+        @include padFont($smp,$sm,$sm,$xsm,$sm);
+        line-height: 1.2;
+    }
+    .author{
+        @include padFont($xsm,0.2rem,$sm,$sm,$sm);
+    }
 }
-header h1 i.fa-lg ~ span{
-    float: right;
-    width: 75%;
-    font-size: 3.998rem;
-    /**
-    2 lines of 3.998 * 1.6 = 12.7936
-    **/
-    padding-left: 1rem;
-    text-align: right;
+.content1 {
+    h3{
+        @include padFont($smp,0.2rem,$sm,$sm,$sm);
+        i{
+            vertical-align:middle;
+            padding-right: 2rem;
+        }
+    }
+    p{
+        @include padFont($fsm,$half,$sm,$sm,$sm);
+    }
+    
 }
-
-.focal h2{
-    font-size: 1.999rem;
-    line-height: 1.2;
-    padding: 2rem 2rem 1rem 2rem;
-}
-.focal .author{
-    font-size: 1rem;
-    padding: 0.2rem 2rem 2rem;
-}
-
-.content1 h3{
-    font-size:1.999rem;
-    padding: 0.2rem 2rem 2rem;
-}
-.content1 h3 i{
-    vertical-align:middle;
-    padding-right: 2rem;
-}
-.content1 p{
-    font-size: 1.414rem;
-    padding: 0.5rem 2rem 2rem;
-}
-
-.content2 h3{
-    font-size: 1.999rem;
-    padding: 1rem 2rem 0.5rem;
-}
-.content2 h4{
-    font-size: 1.999rem;
-    padding: 1rem 2rem 0rem;
-}
-.content2 p{
-    font-size: 1.414rem;
-    padding: 0.5rem 2rem 1rem;
-}
-.content2 li{
-    padding: 0.5rem 2rem;
-    font-size: 1.414rem;
-}
-
-.content2 span[lang]{
-    position: relative;
-}
-.content2 span:hover:after{
-    position: absolute;
-    top: -0.5rem;
-    left: 0;
-    content: attr(data-country);
-    display: block;
-    padding: 0.2rem 1rem 0.2rem 2rem;
-    font-size: 1rem;
-    line-height: 2rem;
-    height: 2rem;
-    width: auto;
-    word-break: keep-all;
-    overflow-wrap: normal;
-    overflow: hidden;
-    background-color: rgba(255,255,255,0.8);
-    background-image: url(../img/uk-icon.png);
-    background-repeat: no-repeat;
-    background-size: 1.5rem auto;
-    background-position: left center;
-}
-.content2 h4 span[lang="sv"]:after{
-    background-image: url(../img/sv-icon.png);
-}
-.content2 h4 span[lang="pt"]:after{
-    background-image: url(../img/pt-icon.png);
-}
-.content2 h4 span[lang="fr"]:after{
-    background-image: url(../img/fr-icon.png);
-}
-.content2 h4 span[lang="no"]:after{
-    background-image: url(../img/no-icon.png);
-}
-.content2 h4 span[lang="hi"]:after{
-    background-image: url(../img/hi-icon.png);
-}
-.content2 h4 span[lang="es"]:after{
-    background-image: url(../img/es-icon.png);
+.content2 {
+    h3{
+        @include padFont($smp,$xsm,$sm,$half,$sm);
+    }
+    h4{
+        @include padFont($smp,$xsm,$sm,0rem,$sm);
+    }
+    p{
+        @include padFont($fsm,$half,$sm,$xsm,$sm);
+    }
+    li{
+        @include padFont($fsm,$half,$sm,$half,$sm);
+    }
+    span[lang]{
+        position: $pR;
+    }
+    span:hover:after{
+        position: $pA;
+        top: -$half;
+        left: 0;
+        content: attr(data-country);
+        display: $B;
+        padding: 0.2rem 1rem 0.2rem 2rem;
+        font-size: 1rem;
+        line-height: 2rem;
+        height: 2rem;
+        width: auto;
+        word-break: keep-all;
+        overflow-wrap: normal;
+        overflow: hidden;
+        background-color: rgba(255,255,255,0.8);
+        background-image: url(../img/uk-icon.png);
+        background-repeat: no-repeat;
+        background-size: 1.5rem auto;
+        background-position: left center;
+    }
+    h4 span[lang="sv"]:after{
+        background-image: url(../img/sv-icon.png);
+    }
+    h4 span[lang="pt"]:after{
+        background-image: url(../img/pt-icon.png);
+    }
+    h4 span[lang="fr"]:after{
+        background-image: url(../img/fr-icon.png);
+    }
+    h4 span[lang="no"]:after{
+        background-image: url(../img/no-icon.png);
+    }
+    h4 span[lang="hi"]:after{
+        background-image: url(../img/hi-icon.png);
+    }
+    h4 span[lang="es"]:after{
+        background-image: url(../img/es-icon.png);
+    }
 }
 /***********************************************
                 FOOTER
 ***********************************************/
-footer h4{
-    font-size: 1.414rem;
-    padding: 0.5rem 2rem;
-    color: $dbr;
+footer{
+    h4{
+        @include fontStyle($fsm,$half,$sm,$half,$sm,$dbr);
+    }
+    p{
+        @include fontStyle($xsm,$half,$sm,$half,$sm,$dgr);
+    }
+    .fa-circle{
+        color: $dgr;
+    }
+    h4[lang=de]{
+        @include dis($B);
+     }
+    h4[lang=en],
+    h4[lang=ar],
+    h4[lang=ru]{
+        @include dis($N);
+    }
 }
-footer p{
-    font-size: 1rem;
-    padding: 0.5rem 2rem;
-    color: $dgr;
-}
-footer .fa-circle{
-    color: $dgr;
-}
-footer h4[lang=de]{
-   display:block;
-}
-footer h4[lang=en],
-footer h4[lang=ar],
-footer h4[lang=ru]{
-    display:none;
-}
-
 /***********************************************
                 MEDIA QUERIES
 ***********************************************/
@@ -286,50 +261,41 @@ footer h4[lang=ru]{
         width: 700px;
         margin: 0 auto;
         min-height: 8rem;
-    }
-    header h1{
-        width: 100%;
-        color: $dbr;
-    }
-    header:before,
-    header:after{
-        width:230px;
-    }
-    header h1 i.fa-lg{
-        display:inline;
-        color: $dbr;
-        vertical-align:baseline;
-        float:none;
-        font-size: 4rem;
-        line-height: 6.3968rem;
-    }
-    header h1 i.fa-lg ~ span{
-        float: none;
-        letter-spacing: 0.25rem;
-        font-size: 3.998rem;
-        /**
-        1 lines of 3.998 * 1.6 = 6.3968
-        **/
-        text-align: left;
-    }
-    
-    header nav{
-        flex-direction: row; /* mobile first */
-        justify-content: space-around;
-        align-items: center;
-    }
-    header nav > a{
-        flex-basis: 20%;
-        font-size: 1rem;
-        line-height: 2rem;
-        min-height: 6rem;
-        border:none;
-        border-left:1px solid $lgr; 
-        padding:1.0rem;
-        background-color: $wht;
-    }
-    header nav > a:last-child{
-        border-right:1px solid $lgr;
+            h1{
+                width: 100%;
+                color: $dbr;
+                    i.fa-lg{
+                        @include floaters($IL,$N);
+                        color: $dbr;
+                        vertical-align:baseline;
+                        @include fslh($sm*2,$lhmax/2);
+                         ~ span{
+                            float: $N;
+                            @include fontSiSp($md,$qt){
+                                text-align: left;
+                            };
+                        }
+                    }
+            }
+            &:before,
+            &:after{
+                width:230px;
+            }
+        nav{
+            @include flexProp($rw,$sa,$ctr);
+            > a{
+                flex-basis: 20%;
+                @include fslh($xsm,$sm);
+                min-height: 6rem;
+                border:$N;
+                border-left:1px solid $lgr; 
+                padding:$xsm;
+                background-color: $wht;
+                    &:last-child{
+                        border-right:1px solid $lgr;
+                    }
+            }
+        }
     }
     section.focal, 
     section.content1,
@@ -338,104 +304,101 @@ footer h4[lang=ru]{
         width: 700px; 
         margin: 0 auto;    
     }
-    .content1 .row{
-        /* same as mobile default */
+    .content2{ 
+        .row{
+            @include flexProp($rw,$ctr,$fs) {
+                flex-wrap: wrap;
+            };
+            .col{
+                flex-basis: 50%;
+            }
+        }
+    } 
+    footer {
+        .row{
+            @include flexProp($rw,$sa,$fs) {
+                flex-wrap: nowrap;
+            }
+            > *{
+                flex-basis: 50%;
+            }
+            .last-row > *{
+                flex-basis: 100%;
+            }
+        }
+
     }
-    .content2 .row{
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
+    section.content2 {
+        h4,li{
+        font-size: $fsm;
+        }
     }
-    .content2 .row .col{
-        flex-basis: 50%;
-    }
-    footer .row{
-        flex-wrap: nowrap;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start;
-    }
-    footer .row > *{
-        flex-basis: 50%;
-    }
-    footer .row.last-row > *{
-        flex-basis: 100%;
-    }
-    section.content2 h4{
-        font-size: 1.414rem;
-    }
-    section.content2 li{
-        font-size: 1.414rem;
-    }
-    footer .fa-circle{
-        color: $mbl;
-    }
-    footer .row:first-child .col:last-child{
-        unicode-bidi: bidi-override;
-        direction: rtl;
-    }
-    footer h4[lang=ar]{
-       display:block;
-    }
-    footer h4[lang=de],
-    footer h4[lang=en],
-    footer h4[lang=ru]{
-        display:none;
+    footer {
+        .fa-circle{
+            color: $mbl;
+        }
+        .row:first-child .col:last-child{
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+        h4[lang=ar]{
+            display:$B;
+        }
+        h4[lang=de],
+        h4[lang=en],
+        h4[lang=ru]{
+            display:$N;
+        }
     }
 }
-
-
-
 @media all and (min-width:901px) and (max-width: 1400px){
     header{
         width: 900px;
         margin: 0 auto;
-    }
-    header:before,
-    header:after{
-        width:300px;
-    }
-    header h1{
-        width: 100%;
-        color: $dbl;
-    }
-    header h1 i.fa-lg{
-        display:inline;
-        color: $dbl;
-        vertical-align:baseline;
-        float:none;
-        font-size: 4rem;
-        line-height: 6.3968rem;
-    }
-    header h1 i.fa-lg ~ span{
-        float: none;
-        letter-spacing: 0.25rem;
-        font-size: 3.998rem;
-        /**
-        1 lines of 3.998 * 1.6 = 6.3968
-        **/
-        text-align: left;
-    }
-    
-    header nav{
-        flex-direction: row; /* mobile first */
-        justify-content: space-around;
-        align-items: center;
-    }
-    header nav > a{
-        flex-basis: 20%;
-        font-size: 1rem;
-        line-height: 2rem;
-        min-height: 2rem;
-        border:none;
-        border-left:1px solid $lgr; 
-        padding: 0 1.0rem;
-        margin: 1.0rem 0;
-        background-color: $wht;
-    }
-    header nav > a:first-child{
-        border-left:none;
+        &:before,
+        &:after{
+            width:300px;
+        }
+        h1{
+            width: 100%;
+            color: $dbl;
+            i.fa-lg{
+                display:inline;
+                color: $dbl;
+                vertical-align:baseline;
+                float:$N;
+                font-size: 4rem;
+                line-height: 6.3968rem;
+                ~ span{
+                    float: $N;
+                    letter-spacing: 0.25rem;
+                    font-size: 3.998rem;
+                    /**
+                    1 lines of 3.998 * 1.6 = 6.3968
+                    **/
+                    text-align: left;
+                }
+            }
+        }
+        nav{
+            flex-direction: row; /* mobile first */
+            justify-content: space-around;
+            align-items: center;
+            > a{
+                flex-basis: 20%;
+                font-size: 1rem;
+                line-height: 2rem;
+                min-height: 2rem;
+                border:$N;
+                border-left:1px solid $lgr; 
+                padding: 0 1.0rem;
+                margin: 1.0rem 0;
+                background-color: $wht;
+                &:first-child{
+                    border-left:$N;
+                }
+            }
+        }
     }
     section.focal, 
     section.content1,
@@ -444,14 +407,16 @@ footer h4[lang=ru]{
         width: 900px; 
         margin: 0 auto;    
     }
-    section.focal h2{
-        width: 600px; 
-        margin: 0 auto;
-    }
-    section.focal p.author{
-        width: 600px; 
-        margin: 0 auto;
-    }
+    section.focal {
+        h2{
+            width: 600px; 
+            margin: 0 auto;
+        }
+        p.author{
+            width: 600px; 
+            margin: 0 auto;
+        }
+}
     .content1 .row,
     .content2 .row,
     footer .row{
@@ -470,100 +435,103 @@ footer h4[lang=ru]{
         flex-grow: 1;
         flex-shrink: 0;
     }
-    footer .row .col{
-        flex-basis: 50%;
-    }
-    footer .row.last-row{
-        justify-content: flex-start;
-    }
-    footer .row.last-row .col{
-        flex-basis: 100%;
-    }
+    footer .row {
+        .col{
+            flex-basis: 50%;
+        }
+        .last-row{
+            justify-content: flex-start;
+            .col{
+                flex-basis: 100%;
+            }
+        }
+}
     section.content1 h3{
         font-size: 1.999rem;
         font-weight: 100;
+        .fa-2x{
+            font-size: 1.999rem;
+            padding-right: 1rem;
+        }
     }
-    section.content1 h3 .fa-2x{
-        font-size: 1.999rem;
-        padding-right: 1rem;
-    }
-    
-    section.content2 h4{
+    section.content2 {
+        h4,
+        li{
         font-size: 1.414rem;
+        }
+        p{
+            font-size: 1rem;
+            font-weight: 400;
+        }
     }
-    section.content2 li{
-        font-size: 1.414rem;
-    }
-    section.content2 p{
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    footer .fa-circle{
-        color: $lbr;
-    }
-    footer h4[lang=ru]{
-       display:block; 
-    }
-    footer h4[lang=de],
-    footer h4[lang=ar],
-    footer h4[lang=en]{
-        display:none;
+    footer {
+        .fa-circle{
+            color: $lbr;
+        }
+        h4{
+            [lang=ru]{
+                display:$B; 
+            }
+            h4[lang=de],
+            h4[lang=ar],
+            h4[lang=en]{
+                display:$N;
+            }
+        }
     }
 }
-
-
 @media all and (min-width:1401px){
     header{
         width: 1400px;
         margin:0 auto;
-    }
-    header:before,
-    header:after{
-        width:450px;
-    }
-    header h1{
-        width: 100%;
-        color: $dbr;
-    }
-    header h1 i.fa-lg{
-        display:inline;
-        color: $dbr;
-        vertical-align:baseline;
-        float:none;
-        font-size: 4rem;
-        line-height: 6.3968rem;
-    }
-    header h1 i.fa-lg ~ span{
-        float: none;
-        letter-spacing: 0.25rem;
-        font-size: 3.998rem;
-        /**
-        1 lines of 3.998 * 1.6 = 6.3968
-        **/
-        text-align: left;
-    }
-    
-    header nav{
-        flex-direction: row; /* mobile first */
-        justify-content: space-around;
-        align-items: center;
-        width: 100%;
-        padding: 0rem 0;
-        background-color: $wht;
-    }
-    header nav > a{
-        flex-basis: 20%;
-        font-size: 1.414rem;
-        line-height: 2rem;
-        min-height: 2rem;
-        border:none;
-        border-left:1px solid $lgr; 
-        padding:0 1.0rem;
-        margin: 1rem 0;
-        background-color: $wht;
-    }
-    header nav > a:first-child{
-        border-left:none;
+        &:before,
+        &:after{
+            width:450px;
+
+        }
+        h1{
+            width: 100%;
+            color: $dbr;
+            i.fa-lg{
+                display:inline;
+                color: $dbr;
+                vertical-align:baseline;
+                float:$N;
+                font-size: 4rem;
+                line-height: 6.3968rem;
+                ~ span{
+                    float: $N;
+                    letter-spacing: 0.25rem;
+                    font-size: 3.998rem;
+                    /**
+                    1 lines of 3.998 * 1.6 = 6.3968
+                    **/
+                    text-align: left;
+                }
+            }
+        }
+        nav{
+            flex-direction: row; /* mobile first */
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            padding: 0rem 0;
+            background-color: $wht;
+            > a{
+                flex-basis: 20%;
+                font-size: 1.414rem;
+                line-height: 2rem;
+                min-height: 2rem;
+                border:$N;
+                border-left:1px solid $lgr; 
+                padding:0 1.0rem;
+                margin: 1rem 0;
+                background-color: $wht;
+                &:first-child{
+                    border-left:$N;
+                }
+            }
+        }
     }
     section.focal, 
     section.content1,
@@ -590,64 +558,70 @@ footer h4[lang=ru]{
         flex-grow: 1;
         flex-shrink: 0;
     }
-    footer .row .col{
-        flex-basis: 50%;
+    footer .row{
+        .col{
+            flex-basis: 50%;
+        }
+        .last-row{
+            justify-content: flex-start;
+            .col{
+                flex-basis: 100%;
+            }
+        }
     }
-    footer .row.last-row{
-        justify-content: flex-start;
+    section{
+        .focal {
+            h2{
+                font-size: 3.998rem;
+                width: 600px; 
+                margin: 0 auto;
+            }
+            p.author{
+                width: 600px; 
+                margin: 0 auto;
+            }
+        }
+        .content1 h3{
+            font-size: 2.827rem;
+            font-weight: 100;
+            .fa-2x{
+                font-size: 2.827rem;
+                padding-right: 1rem;
+                vertical-align: middle;
+            }
+        }
+        .content2 {
+            h4{
+                font-size: 1.999rem;
+            }
+            li{
+                font-size: 1.999rem;
+            }   
+            p{
+                font-size: 1.414rem;
+            }
+        }
     }
-    footer .row.last-row .col{
-        flex-basis: 100%;
+    footer {
+        p{
+            font-size: 1.414rem;
+            letter-spacing: 0.2rem;
+            &:last-child{
+                color: $lgr;
+            }
+        }
+        .fa-circle{
+            color: $mbl;
+        }
     }
-    
-    
-    section.focal h2{
-        font-size: 3.998rem;
-        width: 600px; 
-        margin: 0 auto;
+    footer h4 {
+        [lang=en]{
+            display:$B; 
+         }
+        [lang=de],
+        [lang=ar],
+        [lang=ru]{
+            display:$N;
+        }
     }
-    section.focal p.author{
-        width: 600px; 
-        margin: 0 auto;
-    }
-    
-    section.content1 h3{
-        font-size: 2.827rem;
-        font-weight: 100;
-    }
-    section.content1 h3 .fa-2x{
-        font-size: 2.827rem;
-        padding-right: 1rem;
-        vertical-align: middle;
-    }
-    
-    section.content2 h4{
-        font-size: 1.999rem;
-    }
-    section.content2 li{
-        font-size: 1.999rem;
-    }
-    section.content2 p{
-        font-size: 1.414rem;
-    }
-    footer p{
-        font-size: 1.414rem;
-        letter-spacing: 0.2rem;
-    }
-    footer p:last-child{
-        color: $lgr;
-    }
-    footer .fa-circle{
-        color: $mbl;
-    }
-    
-    footer h4[lang=en]{
-       display:block; 
-    }
-    footer h4[lang=de],
-    footer h4[lang=ar],
-    footer h4[lang=ru]{
-        display:none;
-    }
-    
 }
